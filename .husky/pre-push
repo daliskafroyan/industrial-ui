@@ -1,8 +1,33 @@
-#!/bin/sh
-# Format all files first
-bun format:all || exit $?
+#!/usr/bin/env sh
 
-# Then build registry and sync UI components
-cd apps/ui
-bun registry:build && bun ui:sync
+set -e
 
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+
+run_checks() {
+  cd "$repo_root"
+  bun run format:all
+  cd apps/ui
+  bun run registry:build
+  bun run ui:sync
+}
+
+if command -v bun >/dev/null 2>&1; then
+  run_checks
+  exit 0
+fi
+
+if command -v nix >/dev/null 2>&1 && [ -f "$repo_root/flake.nix" ]; then
+  cd "$repo_root"
+  exec nix develop "path:$repo_root" --command sh -lc '
+    set -e
+    bun run format:all
+    cd apps/ui
+    bun run registry:build
+    bun run ui:sync
+  '
+fi
+
+echo "pre-push: bun not found on PATH." >&2
+echo "Use nix develop, or install Bun globally." >&2
+exit 127
