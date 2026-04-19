@@ -1,1 +1,17 @@
-bunx lint-staged
+#!/usr/bin/env sh
+
+if command -v bunx >/dev/null 2>&1; then
+  exec bunx lint-staged
+fi
+
+if command -v bun >/dev/null 2>&1; then
+  exec bun x lint-staged
+fi
+
+if command -v npx >/dev/null 2>&1; then
+  exec npx --no-install lint-staged
+fi
+
+echo "pre-commit: neither bun/bunx nor npx found on PATH." >&2
+echo "Run commit from nix develop, or install Bun globally." >&2
+exit 127
