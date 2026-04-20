@@ -25,10 +25,10 @@ export default function Particle() {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter variant="bare">
-          <AlertDialogClose render={<Button variant="ghost" />}>
+          <AlertDialogClose render={<Button variant="ghost" size="xl" />}>
             Cancel
           </AlertDialogClose>
-          <AlertDialogClose render={<Button variant="destructive" />}>
+          <AlertDialogClose render={<Button variant="destructive" size="xl" />}>
             Delete Account
           </AlertDialogClose>
         </AlertDialogFooter>
