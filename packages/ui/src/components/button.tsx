@@ -5,8 +5,8 @@ import { useRender } from "@base-ui/react/use-render";
 import { Spinner } from "@coss/ui/components/spinner";
 import { cn } from "@coss/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Children, Fragment, isValidElement } from "react";
 import type * as React from "react";
+import { Children, Fragment, isValidElement } from "react";
 
 export const buttonVariants = cva(
   "relative inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-none border font-medium text-base outline-none transition-shadow before:pointer-events-none before:absolute before:inset-0 before:rounded-none pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-64 data-loading:select-none data-loading:text-transparent sm:text-sm [&_svg:not([class*='opacity-'])]:opacity-80 [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
@@ -28,8 +28,8 @@ export const buttonVariants = cva(
           "size-7 sm:size-6 not-in-data-[slot=input-group]:[&_svg:not([class*='size-'])]:size-4 sm:not-in-data-[slot=input-group]:[&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-10 px-[calc(--spacing(3.5)-1px)] not-has-[>svg]:pe-[calc(--spacing(14)-4px)] sm:h-9 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(8.5)-1px)]",
         sm: "h-8 gap-1.5 px-[calc(--spacing(2.5)-1px)] not-has-[>svg]:pe-[calc(--spacing(10)-4px)] sm:h-7 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(6)-1px)]",
-        xl: "h-11 px-[calc(--spacing(4)-1px)] not-has-[>svg]:pe-[calc(--spacing(16)-4px)] text-lg sm:h-10 sm:text-base [&_svg:not([class*='size-'])]:size-5 sm:[&_svg:not([class*='size-'])]:size-4.5 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(10)-1px)]",
-        xs: "h-7 gap-1 px-[calc(--spacing(2)-1px)] not-has-[>svg]:pe-[calc(--spacing(8)-4px)] text-sm sm:h-6 sm:text-xs [&_svg:not([class*='size-'])]:size-4 sm:[&_svg:not([class*='size-'])]:size-3.5 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(5)-1px)]",
+        xl: "h-11 px-[calc(--spacing(4)-1px)] not-has-[>svg]:pe-[calc(--spacing(16)-4px)] text-lg sm:h-10 sm:text-base [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(10)-1px)] [&_svg:not([class*='size-'])]:size-5 sm:[&_svg:not([class*='size-'])]:size-4.5",
+        xs: "h-7 gap-1 px-[calc(--spacing(2)-1px)] not-has-[>svg]:pe-[calc(--spacing(8)-4px)] text-sm sm:h-6 sm:text-xs [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(5)-1px)] [&_svg:not([class*='size-'])]:size-4 sm:[&_svg:not([class*='size-'])]:size-3.5",
       },
       variant: {
         default:
@@ -66,7 +66,10 @@ function normalizeButtonChildren(children: React.ReactNode): React.ReactNode {
       return <span>{child}</span>;
     }
 
-    if (isValidElement<{ children?: React.ReactNode }>(child) && child.type === Fragment) {
+    if (
+      isValidElement<{ children?: React.ReactNode }>(child) &&
+      child.type === Fragment
+    ) {
       return (
         <Fragment key={child.key}>
           {normalizeButtonChildren(child.props.children)}

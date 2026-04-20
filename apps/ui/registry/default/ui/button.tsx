@@ -28,8 +28,8 @@ export const buttonVariants = cva(
           "size-7 sm:size-6 not-in-data-[slot=input-group]:[&_svg:not([class*='size-'])]:size-4 sm:not-in-data-[slot=input-group]:[&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-10 px-[calc(--spacing(3.5)-1px)] not-has-[>svg]:pe-[calc(--spacing(14)-4px)] sm:h-9 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(8.5)-1px)]",
         sm: "h-8 gap-1.5 px-[calc(--spacing(2.5)-1px)] not-has-[>svg]:pe-[calc(--spacing(10)-4px)] sm:h-7 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(6)-1px)]",
-        xl: "h-11 px-[calc(--spacing(4)-1px)] not-has-[>svg]:pe-[calc(--spacing(16)-4px)] text-lg sm:h-10 sm:text-base [&_svg:not([class*='size-'])]:size-5 sm:[&_svg:not([class*='size-'])]:size-4.5 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(10)-1px)]",
-        xs: "h-7 gap-1 px-[calc(--spacing(2)-1px)] not-has-[>svg]:pe-[calc(--spacing(8)-4px)] text-sm sm:h-6 sm:text-xs [&_svg:not([class*='size-'])]:size-4 sm:[&_svg:not([class*='size-'])]:size-3.5 [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(5)-1px)]",
+        xl: "h-11 px-[calc(--spacing(4)-1px)] not-has-[>svg]:pe-[calc(--spacing(16)-4px)] text-lg sm:h-10 sm:text-base [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(10)-1px)] [&_svg:not([class*='size-'])]:size-5 sm:[&_svg:not([class*='size-'])]:size-4.5",
+        xs: "h-7 gap-1 px-[calc(--spacing(2)-1px)] not-has-[>svg]:pe-[calc(--spacing(8)-4px)] text-sm sm:h-6 sm:text-xs [&>svg:last-child:not(:first-child)]:ms-[calc(--spacing(5)-1px)] [&_svg:not([class*='size-'])]:size-4 sm:[&_svg:not([class*='size-'])]:size-3.5",
       },
       variant: {
         default:
